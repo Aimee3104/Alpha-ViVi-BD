@@ -5,6 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>You're Invited!</title>
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- 🔥 Fakie Animation -->
+  <style>
+    @keyframes fakieShake {
+      0% { transform: rotate(0deg); }
+      25% { transform: rotate(-10deg); }
+      50% { transform: rotate(10deg); }
+      75% { transform: rotate(-10deg); }
+      100% { transform: rotate(0deg); }
+    }
+    .animate-fakie {
+      animation: fakieShake 0.5s ease-in-out infinite;
+    }
+  </style>
+  
 </head>
 <body class="bg-pink-50 flex justify-center items-center min-h-screen px-4 py-8">
 
@@ -44,7 +59,8 @@
         <option value="No">No 😢</option>
       </select>
       <!-- FAKIE message for No -->
-<div id="fakieMessage" class="hidden text-red-600 text-2xl font-extrabold text-center mt-2">
+<div id="fakieMessage"
+     class="hidden text-red-700 text-5xl font-extrabold text-center mt-4 animate-shake">
   FAKIE 🖕
 </div>
       <!-- Date Voting -->
