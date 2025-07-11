@@ -46,12 +46,12 @@
       <!-- Name -->
       <input type="text" name="entry.381883311" placeholder="Your Name" required
              class="w-full p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-400"/>
-      <p id="errorName" class="text-red-500 text-sm hidden mt-1">Please enter your name.</p>
+      <p id="errorName" class="text-red-500 text-sm hidden">Please enter your name.</p>
 
       <!-- Email -->
       <input type="email" name="entry.97539824" placeholder="Your Email" required
              class="w-full p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-400"/>
-      <p id="errorEmail" class="text-red-500 text-sm hidden mt-1">Please enter a valid email.</p>
+      <p id="errorEmail" class="text-red-500 text-sm hidden">Please enter a valid email.</p>
 
       <!-- Attendance -->
       <select name="entry.939711493" id="attendance" required
@@ -61,7 +61,7 @@
         <option value="Yes">Yes 🎉</option>
         <option value="No">No 😢</option>
       </select>
-      <p id="errorAttendance" class="text-red-500 text-sm hidden mt-1">Please select attendance status.</p>
+      <p id="errorAttendance" class="text-red-500 text-sm hidden">Please select attendance status.</p>
 
       <!-- FAKIE message for No -->
       <div id="fakieMessage"
@@ -86,7 +86,7 @@
             July 21, 2025 @ 6:00 PM
           </label>
         </div>
-        <p id="errorVote" class="text-red-500 text-sm hidden mt-1">Please select at least one date.</p>
+        <p id="errorVote" class="text-red-500 text-sm hidden">Please select at least one date.</p>
         <p class="text-sm text-gray-500 mt-3">
           🗓️ We’ll let you know the confirmed date by <strong>Sunday, July 13</strong>!
         </p>
@@ -112,7 +112,7 @@
 
   </div>
 
-  <!-- Script -->
+  <!-- Form Script -->
   <script>
     function toggleVote(value) {
       const vote = document.getElementById('voteSection');
@@ -141,34 +141,35 @@
       const errorAttendance = document.getElementById('errorAttendance');
       const errorVote = document.getElementById('errorVote');
 
+      // Reset all errors
       errorName.classList.add('hidden');
       errorEmail.classList.add('hidden');
       errorAttendance.classList.add('hidden');
       errorVote.classList.add('hidden');
 
-      let isValid = true;
+      let valid = true;
 
       if (name.value.trim() === "") {
         errorName.classList.remove('hidden');
-        isValid = false;
+        valid = false;
       }
 
       if (email.value.trim() === "") {
         errorEmail.classList.remove('hidden');
-        isValid = false;
+        valid = false;
       }
 
       if (attendance === "") {
         errorAttendance.classList.remove('hidden');
-        isValid = false;
+        valid = false;
       }
 
       if (attendance === "Yes" && voteCheckboxes.length === 0) {
         errorVote.classList.remove('hidden');
-        isValid = false;
+        valid = false;
       }
 
-      return isValid;
+      return valid;
     }
   </script>
 
