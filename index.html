@@ -45,22 +45,23 @@
       </select>
 
       <!-- Date Voting -->
-      <div id="voteSection" class="hidden">
-        <label class="block text-sm font-medium text-gray-700 mb-2">Which date works best for you?</label>
-        <div class="space-y-2">
-          <label class="flex items-center">
-            <input type="radio" name="entry.2054717780" value="July 16"
-                   class="mr-2 text-pink-500 focus:ring-pink-400" required>
-            July 16, 2025 @ 6:00 PM
-          </label>
-          <label class="flex items-center">
-            <input type="radio" name="entry.2054717780" value="July 21"
-                   class="mr-2 text-pink-500 focus:ring-pink-400" required>
-            July 21, 2025 @ 6:00 PM
-          </label>
-        </div>
-      </div>
-
+      <!-- Date Voting (multiple choice) -->
+<div id="voteSection" class="hidden">
+  <label class="block text-sm font-medium text-gray-700 mb-2">Which dates work for you? (Choose one or both)</label>
+  <div class="space-y-2">
+    <label class="flex items-center">
+      <input type="checkbox" name="entry.2054717780" value="July 16"
+             class="mr-2 text-pink-500 focus:ring-pink-400">
+      July 16, 2025 @ 6:00 PM
+    </label>
+    <label class="flex items-center">
+      <input type="checkbox" name="entry.2054717780" value="July 21"
+             class="mr-2 text-pink-500 focus:ring-pink-400">
+      July 21, 2025 @ 6:00 PM
+    </label>
+  </div>
+</div>
+      
       <!-- Submit Button -->
       <button type="submit"
               class="w-full bg-pink-500 hover:bg-pink-600 text-white font-semibold py-3 rounded-xl transition">
