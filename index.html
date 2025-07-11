@@ -43,7 +43,10 @@
         <option value="Yes">Yes 🎉</option>
         <option value="No">No 😢</option>
       </select>
-
+      <!-- FAKIE message for No -->
+<div id="fakieMessage" class="hidden text-red-600 text-2xl font-extrabold text-center mt-2">
+  FAKIE 🖕
+</div>
       <!-- Date Voting -->
       <!-- Date Voting (multiple choice) -->
 <div id="voteSection" class="hidden">
@@ -90,5 +93,25 @@
     }
   </script>
 
+<!-- Show/hide vote section or FAKIE message based on RSVP -->
+<script>
+  function toggleVote(value) {
+    const vote = document.getElementById('voteSection');
+    const fakie = document.getElementById('fakieMessage');
+
+    if (value === "Yes") {
+      vote.classList.remove('hidden');
+      fakie.classList.add('hidden');
+    } else if (value === "No") {
+      vote.classList.add('hidden');
+      fakie.classList.remove('hidden');
+    } else {
+      vote.classList.add('hidden');
+      fakie.classList.add('hidden');
+    }
+  }
+</script>
+
 </body>
 </html>
+
