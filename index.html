@@ -10,14 +10,16 @@
   <div class="bg-white rounded-2xl shadow-xl p-6 max-w-xl w-full text-center">
     <h1 class="text-3xl font-extrabold text-purple-800 mb-4">RSVP to Alpha Vivi’s Birthday</h1>
 
-    <form action="https://docs.google.com/forms/d/e/1FAIpQLSewBgAhHAUYvXxs83rc23fN2BaNuS9ykiBJEN9bX8QXQqpUZg/viewform?usp=dialog" method="POST" target="hidden_iframe" onsubmit="submitted=true" class="space-y-4">
-      <input name="entry.381883311" type="text" placeholder="Your Name" required
-             class="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-pink-400" />
-             
-      <input name="entry.97539824" type="email" placeholder="Your Email" required
+    <form action="https://docs.google.com/forms/d/e/1FAIpQLSewBgAhHAUYvXxs83rc23fN2BaNuS9ykiBJEN9bX8QXQqpUZg/formResponse"
+          method="POST" target="hidden_iframe" onsubmit="submitted=true" class="space-y-4">
+
+      <input name="entry.1115792615" type="text" placeholder="Your Name" required
              class="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-pink-400" />
 
-      <select name="entry.939711493" required onchange="toggleDateOptions(this.value)"
+      <input name="entry.751094343" type="email" placeholder="Your Email" required
+             class="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-pink-400" />
+
+      <select name="entry.454101822" required onchange="toggleDateOptions(this.value)"
               class="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-pink-400">
         <option value="">Will you attend?</option>
         <option value="Yes">Yes</option>
@@ -25,11 +27,11 @@
       </select>
 
       <div id="dateOptions" class="hidden">
-        <select name="entry.2054717780"
+        <select name="entry.2087838320"
                 class="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-pink-400">
           <option value="">Select preferred date</option>
-          <option value="July 16, 2025 at 6 PM">🌟 July 16, 2025 at 6 PM</option>
-          <option value="July 21, 2025 at 6 PM">🎉 July 21, 2025 at 6 PM</option>
+          <option value="July 16, 2025 at 6 PM">🌟 July 16, 2025 at 6 PM</option>
+          <option value="July 21, 2025 at 6 PM">🎉 July 21, 2025 at 6 PM</option>
         </select>
       </div>
 
@@ -39,12 +41,12 @@
       </button>
     </form>
 
-    <iframe name="hidden_iframe" style="display:none;" onload="if(submitted) alert('✅ RSVP submitted via Google Form!')"></iframe>
+    <!-- Hidden iframe for submission -->
+    <iframe name="hidden_iframe" style="display:none;" onload="if(submitted) alert('✅ RSVP submitted!')"></iframe>
   </div>
 
   <script>
     let submitted = false;
-
     function toggleDateOptions(value) {
       document.getElementById('dateOptions').classList.toggle('hidden', value !== 'Yes');
     }
