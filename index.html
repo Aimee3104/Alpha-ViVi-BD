@@ -19,8 +19,8 @@
       animation: fakieShake 0.5s ease-in-out infinite;
     }
   </style>
-  
 </head>
+
 <body class="bg-pink-50 flex justify-center items-center min-h-screen px-4 py-8">
 
   <div class="bg-white rounded-2xl shadow-2xl p-6 max-w-xl w-full">
@@ -36,7 +36,7 @@
       <li>Lots of meat for KBBQ, Drinks, Snacks</li> 
       <li>Board games and chaos guaranteed 😈</li> 
     </ul>
-    
+
     <!-- RSVP Form -->
     <form
       action="https://docs.google.com/forms/d/e/1FAIpQLSewBgAhHAUYvXxs83rc23fN2BaNuS9ykiBJEN9bX8QXQqpUZg/formResponse"
@@ -58,30 +58,35 @@
         <option value="Yes">Yes 🎉</option>
         <option value="No">No 😢</option>
       </select>
+
       <!-- FAKIE message for No -->
-<div id="fakieMessage"
-     class="hidden text-red-700 text-5xl font-extrabold text-center mt-8 animate-shake">
-  FAKIE 🖕
-</div>
-      <!-- Date Voting -->
+      <div id="fakieMessage"
+           class="hidden text-red-700 text-5xl font-extrabold text-center mt-8 animate-fakie">
+        FAKIE 🖕
+      </div>
+
       <!-- Date Voting (multiple choice) -->
-<div id="voteSection" class="hidden">
-  <label class="block text-sm font-medium text-gray-700 mb-2">Which dates work for you? (Choose one or both)</label>
-  <div class="space-y-2">
-    <label class="flex items-center">
-      <input type="checkbox" name="entry.2054717780" value="July 16"
-             class="mr-2 text-pink-500 focus:ring-pink-400">
-      July 16, 2025 @ 6:00 PM
-    </label>
-    <label class="flex items-center">
-      <input type="checkbox" name="entry.2054717780" value="July 21"
-             class="mr-2 text-pink-500 focus:ring-pink-400">
-      July 21, 2025 @ 6:00 PM
-    </label>
-  </div>
-  <p class="text-sm text-gray-500 mt-3">🗓️ We’ll let you know the confirmed date by <strong>Sunday, July 13</strong>!</p>
-</div>
-      
+      <div id="voteSection" class="hidden">
+        <label class="block text-sm font-medium text-gray-700 mb-2">
+          Which dates work for you? (Choose one or both)
+        </label>
+        <div class="space-y-2">
+          <label class="flex items-center">
+            <input type="checkbox" name="entry.2054717780" value="July 16"
+                   class="mr-2 text-pink-500 focus:ring-pink-400">
+            July 16, 2025 @ 6:00 PM
+          </label>
+          <label class="flex items-center">
+            <input type="checkbox" name="entry.2054717780" value="July 21"
+                   class="mr-2 text-pink-500 focus:ring-pink-400">
+            July 21, 2025 @ 6:00 PM
+          </label>
+        </div>
+        <p class="text-sm text-gray-500 mt-3">
+          🗓️ We’ll let you know the confirmed date by <strong>Sunday, July 13</strong>!
+        </p>
+      </div>
+
       <!-- Submit Button -->
       <button type="submit"
               class="w-full bg-pink-500 hover:bg-pink-600 text-white font-semibold py-3 rounded-xl transition">
@@ -102,32 +107,24 @@
 
   </div>
 
+  <!-- Script to handle form logic -->
   <script>
     function toggleVote(value) {
       const vote = document.getElementById('voteSection');
-      vote.classList.toggle('hidden', value !== "Yes");
+      const fakie = document.getElementById('fakieMessage');
+
+      if (value === "Yes") {
+        vote.classList.remove('hidden');
+        fakie.classList.add('hidden');
+      } else if (value === "No") {
+        vote.classList.add('hidden');
+        fakie.classList.remove('hidden');
+      } else {
+        vote.classList.add('hidden');
+        fakie.classList.add('hidden');
+      }
     }
   </script>
 
-<!-- Show/hide vote section or FAKIE message based on RSVP -->
-<script>
-  function toggleVote(value) {
-    const vote = document.getElementById('voteSection');
-    const fakie = document.getElementById('fakieMessage');
-
-    if (value === "Yes") {
-      vote.classList.remove('hidden');
-      fakie.classList.add('hidden');
-    } else if (value === "No") {
-      vote.classList.add('hidden');
-      fakie.classList.remove('hidden');
-    } else {
-      vote.classList.add('hidden');
-      fakie.classList.add('hidden');
-    }
-  }
-</script>
-
 </body>
 </html>
-
