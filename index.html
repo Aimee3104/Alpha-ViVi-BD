@@ -40,15 +40,18 @@
     <!-- RSVP Form -->
     <form
       action="https://docs.google.com/forms/d/e/1FAIpQLSewBgAhHAUYvXxs83rc23fN2BaNuS9ykiBJEN9bX8QXQqpUZg/formResponse"
-      method="POST" target="_blank" id="rsvpForm" class="space-y-4">
+      method="POST" target="_blank" id="rsvpForm" class="space-y-4"
+      onsubmit="return validateForm()">
 
       <!-- Name -->
       <input type="text" name="entry.381883311" placeholder="Your Name" required
              class="w-full p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-400"/>
+      <p id="errorName" class="text-red-500 text-sm hidden mt-1">Please enter your name.</p>
 
       <!-- Email -->
       <input type="email" name="entry.97539824" placeholder="Your Email" required
              class="w-full p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-400"/>
+      <p id="errorEmail" class="text-red-500 text-sm hidden mt-1">Please enter a valid email.</p>
 
       <!-- Attendance -->
       <select name="entry.939711493" id="attendance" required
@@ -58,13 +61,13 @@
         <option value="Yes">Yes 🎉</option>
         <option value="No">No 😢</option>
       </select>
+      <p id="errorAttendance" class="text-red-500 text-sm hidden mt-1">Please select attendance status.</p>
 
       <!-- FAKIE message for No -->
       <div id="fakieMessage"
-     class="hidden text-red-700 text-8xl font-extrabold text-center mt-8 animate-fakie">
-  FAKIE🖕
-</div>
-
+           class="hidden text-red-700 text-8xl font-extrabold text-center mt-8 animate-fakie">
+        FAKIE🖕
+      </div>
 
       <!-- Date Voting (multiple choice) -->
       <div id="voteSection" class="hidden">
@@ -83,6 +86,7 @@
             July 21, 2025 @ 6:00 PM
           </label>
         </div>
+        <p id="errorVote" class="text-red-500 text-sm hidden mt-1">Please select at least one date.</p>
         <p class="text-sm text-gray-500 mt-3">
           🗓️ We’ll let you know the confirmed date by <strong>Sunday, July 13</strong>!
         </p>
@@ -108,7 +112,7 @@
 
   </div>
 
-  <!-- Script to handle form logic -->
+  <!-- Script -->
   <script>
     function toggleVote(value) {
       const vote = document.getElementById('voteSection');
@@ -124,6 +128,47 @@
         vote.classList.add('hidden');
         fakie.classList.add('hidden');
       }
+    }
+
+    function validateForm() {
+      const name = document.querySelector('input[name="entry.381883311"]');
+      const email = document.querySelector('input[name="entry.97539824"]');
+      const attendance = document.getElementById('attendance').value;
+      const voteCheckboxes = document.querySelectorAll('input[name="entry.2054717780"]:checked');
+
+      const errorName = document.getElementById('errorName');
+      const errorEmail = document.getElementById('errorEmail');
+      const errorAttendance = document.getElementById('errorAttendance');
+      const errorVote = document.getElementById('errorVote');
+
+      errorName.classList.add('hidden');
+      errorEmail.classList.add('hidden');
+      errorAttendance.classList.add('hidden');
+      errorVote.classList.add('hidden');
+
+      let isValid = true;
+
+      if (name.value.trim() === "") {
+        errorName.classList.remove('hidden');
+        isValid = false;
+      }
+
+      if (email.value.trim() === "") {
+        errorEmail.classList.remove('hidden');
+        isValid = false;
+      }
+
+      if (attendance === "") {
+        errorAttendance.classList.remove('hidden');
+        isValid = false;
+      }
+
+      if (attendance === "Yes" && voteCheckboxes.length === 0) {
+        errorVote.classList.remove('hidden');
+        isValid = false;
+      }
+
+      return isValid;
     }
   </script>
 
